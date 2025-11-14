@@ -87,7 +87,8 @@ if __name__ == '__main__':
 
     # Inicializa sala
     if jogador == "1":
-        r.hset(f"sala:{sala}", mapping={"p1": "", "p2": ""})
+       r.hset(sala, "p1", "")
+       r.hset(sala, "p2", "")
 
     while True:
         front(state=0, user_credits=user_credits)
@@ -118,7 +119,8 @@ if __name__ == '__main__':
         user_credits += resul
 
         # Limpa pra próxima rodada
-        r.hset(f"sala:{sala}", mapping={"p1": "", "p2": ""})
+        r.hset(sala, "p1", "")
+        r.hset(sala, "p2", "")
 
         # Deleta a sala
         if user_credits <= 0:
